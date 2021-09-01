@@ -1,0 +1,25 @@
+{
+  "name": "candy-maker-api",
+  "version": "1.0.0",
+  "description": "## Part One Instructions In the initial commit of this project you were provided with the SQL to create a database of candies with their manufacturers. Working in a branch called `part-one-answer`, your task is to implement an Express driven REST API that allows a user to retrieve this data. Your API should support the routes listed below, pulling the data from the database via Sequelize models.",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinSalina/candy-maker-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinSalina/candy-maker-api/issues"
+  },
+  "homepage": "https://github.com/KevinSalina/candy-maker-api#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5"
+  }
+}
