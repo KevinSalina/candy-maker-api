@@ -1,6 +1,5 @@
 const models = require('../models')
 
-
 const getAllManufacturers = async (req, res) => {
   const allProdcuts = await models.Manufacturers.findAll({
     include: [{
