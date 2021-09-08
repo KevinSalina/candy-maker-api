@@ -1,13 +1,16 @@
 const Sequelize = require('sequelize');
 const manufacturersModel = require('./manufacturersModel');
 const productsModel = require('./productsModel')
+const allConfigs = require('../configs/sequelize')
 
-const connection = new Sequelize('candies', 'candies', 'C4nd13$!', {
-  host: 'localhost',
-  dialect: 'mysql',
-  define: {
-    timestamps: true
-  }
+
+const environment = process.env.NODE_ENV || 'development'
+const { database, username, password, dialect, host } = allConfigs[environment]
+
+
+const connection = new Sequelize(database, username, password, {
+  host,
+  dialect,
 });
 
 
