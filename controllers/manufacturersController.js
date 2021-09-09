@@ -1,4 +1,5 @@
 const models = require('../models')
+const { Op } = require('sequelize')
 
 const getAllManufacturers = async (req, res) => {
   const allProdcuts = await models.Manufacturers.findAll({
@@ -10,16 +11,18 @@ const getAllManufacturers = async (req, res) => {
   res.send(allProdcuts)
 }
 
-const getManufacturersById = async (req, res) => {
-  const { id } = req.params
-  const manufacturerById = await models.Manufacturers.findOne({
-    where: { id },
+const getManufacturersByName = async (req, res) => {
+  const { name } = req.params
+  const manufacturerByName = await models.Manufacturers.findOne({
+    where: { name: { [Op.substring]: `${name}` } },
+    attributes: ['id', 'name', 'country'],
     include: [{
-      model: models.Products
+      model: models.Products,
+      attributes: ['id', 'name', 'yearIntroduced']
     }]
   })
 
-  return manufacturerById ? res.send(manufacturerById) : res.sendStatus(404).send('manufacturer not found')
+  return manufacturerByName ? res.send(manufacturerByName) : res.sendStatus(404).send('manufacturer not found')
 }
 
-module.exports = { getAllManufacturers, getManufacturersById }
+module.exports = { getAllManufacturers, getManufacturersByName }
